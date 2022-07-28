@@ -14,10 +14,11 @@ namespace BlogManagement
             {
                 new Blog("Salam","FirstBlog",BlogStatus.Approved, tags),
                  new Blog("Salam1", "secondblog", BlogStatus.Rejected, tags)
-        };
+            };
 
-          
-       
+
+            Console.WriteLine(BlogStatus.Approved.GetAze());
+
         }
     }
 
@@ -28,9 +29,9 @@ namespace BlogManagement
         public BlogStatus Status { get; set; }
         public string[] Tags { get; set; }
         public DateTime CreatedDate { get; set; } = DateTime.Now;
-       
 
-        public Blog(string tittle,string content, BlogStatus status,params string[] tags)
+
+        public Blog(string tittle, string content, BlogStatus status, params string[] tags)
         {
             Tittle = tittle;
             Content = content;
@@ -46,6 +47,33 @@ namespace BlogManagement
         Sent,
         Approved,
         Rejected
+    }
+
+
+    static class BlogStatusExtension
+    {
+        public static string GetAze(this BlogStatus status)
+        {
+            switch (status)
+            {
+                case BlogStatus.Sent:
+                    return "gonderildi";
+
+                   
+                case BlogStatus.Approved:
+
+                    return "qebul edildi";
+                    
+                case BlogStatus.Rejected:
+                    return "Legv Edildi";
+                    
+                default:
+                    return "sehvdir";
+                   
+            }
+        }
+
+
     }
 
 }
