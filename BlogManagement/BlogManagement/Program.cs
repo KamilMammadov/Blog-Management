@@ -10,12 +10,14 @@ namespace BlogManagement
 
             string[] tags = { "firsttag" };
 
+            List<Blog> blogs = new List<Blog>()
+            {
+                new Blog("Salam","FirstBlog",BlogStatus.Approved, tags),
+                 new Blog("Salam1", "secondblog", BlogStatus.Rejected, tags)
+        };
 
-
-            Blog blog = new Blog("Salam","FirstBlog",BlogStatus.Approved, tags);
-            Blog blog1 = new Blog("Salam1", "secondblog", BlogStatus.Rejected, tags);
-            Blog blog2 = new Blog("Salam2", "thirdblog", BlogStatus.Sent, tags);
-            Blog blog3 = new Blog("Salam3", "fourthblog", BlogStatus.Approved, tags);
+          
+       
         }
     }
 
@@ -23,9 +25,10 @@ namespace BlogManagement
     {
         public string Tittle { get; set; }
         public string Content { get; set; }
+        public BlogStatus Status { get; set; }
         public string[] Tags { get; set; }
         public DateTime CreatedDate { get; set; } = DateTime.Now;
-        public BlogStatus Status { get; set; }
+       
 
         public Blog(string tittle,string content, BlogStatus status,params string[] tags)
         {
